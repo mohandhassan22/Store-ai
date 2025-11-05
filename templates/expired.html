@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="expired-page">
+    <h2><i class="fas fa-exclamation-triangle"></i> المنتجات المنتهية الصلاحية</h2>
+    <p><i class="fas fa-info-circle"></i> هذه المنتجات انتهت صلاحيتها. يُنصح بإزالتها أو مراجعتها.</p>
+
+    <div class="cards-grid">
+    {% for p in items %}
+      <div class="card product-card">
+        {% if p.get('image') %}
+          <div class="card-media">
+            <img src="/static/uploads/{{ p['image'] }}" alt="{{ p['name'] }}" class="card-media-img" loading="lazy" decoding="async" />
+          </div>
+        {% else %}
+          <div class="card-media card-media--empty">لا صورة</div>
+        {% endif %}
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3 class="product-name">{{ p['name'] }}</h3>
+            <div class="price-badge">{{ '{:.2f}'.format(p['price']|float) }} ر.م</div>
+          </div>
+          <div class="meta-row">
+            <div class="muted">الفئة: {{ p['category'] or '-' }}</div>
+            <div class="muted">الكمية: <strong>{{ p['quantity'] }}</strong></div>
+          </div>
+          <div class="desc">{{ p['description'] }}</div>
+        </div>
+        <div class="card-footer">
+          <div class="card-actions">
+            <a class="btn" href="/edit/{{ p['id'] }}"><i class="fas fa-edit"></i> تعديل</a>
+            <button class="btn del" data-id="{{ p['id'] }}"><i class="fas fa-trash"></i> حذف</button>
+          </div>
+          <div class="small muted"><i class="fas fa-calendar-alt"></i> انتهاء: {{ p['expiry_date'] or 'غير محدد' }}</div>
+        </div>
+      </div>
+    {% else %}
+      <p>لا توجد منتجات منتهية الصلاحية</p>
+    {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+<!-- Empty footer block to hide footer -->
+{% endblock %}

@@ -1,0 +1,128 @@
+<!doctype html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>نظام المخزن</title>
+
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+
+  <header class="topbar">
+
+    <nav class="topnav">
+      <a href="/products"><i class="fas fa-warehouse"></i> المخزن</a>
+      <a href="/add"><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+      <a href="/sales"><i class="fas fa-chart-line"></i> سجل المبيعات</a>
+      <a href="/expired"><i class="fas fa-exclamation-triangle"></i> المنتجات المنتهية</a>
+      <a href="/"><i class="fas fa-home"></i> الصفحة الرئيسية</a>
+    </nav>
+
+    <div class="brand">
+      <img src="/static/LOGO.jpg" alt="logo" class="brand-logo">
+      <div class="brand-title">نظام المخزن</div>
+    </div>
+
+    <div class="actions">
+      <a href="/ai" class="btn small"><i class="fas fa-brain"></i> صفحة الذكاء</a>
+      <button id="notificationsToggle" class="notification-toggle" title="الإشعارات والتنبؤات" aria-label="الإشعارات">
+        <i class="fas fa-bell"></i>
+        <span id="notificationCount" class="notification-badge hidden">0</span>
+      </button>
+      <button id="chatToggle" class="chat-toggle" title="فتح الشات" aria-label="فتح الشات">
+        <i class="fas fa-comments"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-menu">
+      <button id="mobileMenuToggle" class="hamburger" aria-label="فتح القائمة">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div id="mobileDropdown" class="mobile-dropdown hidden">
+        <a href="/products"><i class="fas fa-warehouse"></i> المخزن</a>
+        <a href="/add"><i class="fas fa-plus-circle"></i> إضافة منتج</a>
+        <a href="/expired"><i class="fas fa-exclamation-triangle"></i> المنتجات المنتهية</a>
+        <a href="/sales"><i class="fas fa-chart-line"></i> سجل المبيعات</a>
+        <a href="/ai"><i class="fas fa-brain"></i> صفحة الذكاء</a>
+        <a href="/" id="homeLink"><i class="fas fa-home"></i> الصفحة الرئيسية</a>
+        <button id="notificationsToggleMobile" class="dropdown-btn"><i class="fas fa-bell"></i> الإشعارات</button>
+        <button id="chatToggleMobile" class="dropdown-btn"><i class="fas fa-comments"></i> الشات</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Global Chat Widget (hidden by default) -->
+  <div id="globalChat" class="global-chat hidden" aria-hidden="true">
+    <div class="global-chat-header">
+      <div>
+        <strong>مساعد المخزن</strong>
+        <div class="muted">اسأل عن المنتجات، المخزون، أو التقارير</div>
+      </div>
+      <button id="globalChatClose" class="close-x" aria-label="اغلاق">×</button>
+    </div>
+    <div id="globalChatWindow" class="chat-window"></div>
+    <form id="globalChatForm" class="chat-form">
+      <input id="globalChatInput" placeholder="اكتب سؤالك هنا أو اضغط على أحد الاقتراحات" autocomplete="off">
+      <button class="btn" type="submit">إرسال</button>
+    </form>
+  </div>
+
+  <!-- Notifications Widget (hidden by default) -->
+  <div id="notificationsPanel" class="notifications-panel hidden" aria-hidden="true">
+    <div class="notifications-header">
+      <div>
+        <strong>🔔 الإشعارات والتنبؤات</strong>
+        <div class="muted">تنبيهات ذكية ومعلومات مهمة</div>
+      </div>
+      <button id="notificationsClose" class="close-x" aria-label="اغلاق">×</button>
+    </div>
+    <div id="notificationsContent" class="notifications-content">
+      <div class="loading-notifications">
+        <i class="fas fa-spinner fa-spin"></i> جاري تحميل الإشعارات...
+      </div>
+    </div>
+  </div>
+
+  {% block footer %}
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>عن المشروع</h4>
+        <p>نظام بسيط لإدارة مخزون المتجر مع وظائف الذكاء البسيطة للتقارير والملخصات.</p>
+      </div>
+      <div>
+        <h4>ما الذي يقدمه</h4>
+        <ul>
+          <li>عرض المنتجات والمخزون</li>
+          <li>تقارير الذكاء الاصطناعي (تحليلات، تنبيهات)</li>
+          <li>تصدير تقارير Excel</li>
+        </ul>
+      </div>
+      <div>
+        <h4>تواصل معنا</h4>
+        <p class="muted">هذا المشروع تعليمي. عدِّل ونمِّه حسب حاجتك.</p>
+      </div>
+    </div>
+  </footer>
+  {% endblock %}
+
+  <script src="/static/script.js"></script>
+</body>
+
+</html>

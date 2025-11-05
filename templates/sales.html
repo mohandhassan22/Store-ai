@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="sales-page">
+    <h2><i class="fas fa-chart-line"></i> سجل المبيعات</h2>
+  <p><i class="fas fa-info-circle"></i> اختر المنتجات وأدخل الكميات المباعة. سيتم خصمها من المخزون تلقائيًا.</p>
+  <div id="sales-form">
+    {% for p in products %}
+      <div class="sale-item" data-id="{{ p['id'] }}">
+        <label><i class="fas fa-box"></i> {{ p['name'] }} (الكمية المتاحة: {{ p['quantity'] }})</label>
+        <input type="number" class="amount-input" min="0" max="{{ p['quantity'] }}" placeholder="الكمية المباعة" value="0">
+      </div>
+    {% endfor %}
+    <button id="submit-sales" class="btn"><i class="fas fa-save"></i> سجل المبيعات</button>
+  </div>
+  <div id="message"></div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+<!-- Empty footer block to hide footer -->
+{% endblock %}

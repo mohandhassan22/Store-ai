@@ -1,0 +1,4 @@
+- [x] Modify templates/base.html: add hamburger menu button and dropdown structure with three sections
+- [x] Modify static/style.css: add styles for hamburger and dropdown, hide topnav and actions on mobile
+- [x] Modify static/script.js: add JavaScript to toggle the dropdown menu
+- [x] Test the mobile interface changes

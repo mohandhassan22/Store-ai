@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2><i class="fas fa-plus-circle"></i> إضافة منتج</h2>
+  <form method="post" class="form-container" enctype="multipart/form-data">
+    <label>اسم المنتج
+      <input name="name" required value="{{ product.name if product else '' }}">
+    </label>
+    <label>الفئة
+      <input name="category" value="{{ product.category if product else '' }}">
+    </label>
+    <label>الكمية
+      <input type="number" name="quantity" value="{{ product.quantity if product else 0 }}" min="0">
+    </label>
+    <label>السعر
+      <input type="number" name="price" step="0.01" value="{{ product.price if product else 0 }}">
+    </label>
+    <label>تاريخ الصلاحية
+      <input type="date" name="expiry_date" value="{{ product.expiry_date if product and product.expiry_date else '' }}">
+    </label>
+    <label>نبذة
+      <textarea name="description">{{ product.description if product else '' }}</textarea>
+    </label>
+    {% if product and product.image %}
+      <div>
+        <p>الصورة الحالية:</p>
+        <img src="/static/uploads/{{ product.image }}" style="max-width:150px;display:block;margin-bottom:8px;"/>
+        <label><input type="checkbox" name="remove_image" value="1"> إزالة الصورة الحالية</label>
+      </div>
+    {% endif %}
+    <label for="image-upload" class="file-upload-btn"><i class="fas fa-image"></i> اختر صورة المنتج</label>
+    <input type="file" id="image-upload" name="image" accept="image/*" style="display:none;">
+    <div id="image-preview" class="image-preview">سيظهر هنا معاينة الصورة المختارة</div>
+    <button class="btn" type="submit"><i class="fas fa-save"></i> حفظ المنتج</button>
+  </form>
+{% endblock %}
+
+{% block footer %}
+<!-- Empty footer block to hide footer -->
+{% endblock %}

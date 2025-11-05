@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+      <div class="ai-page">
+        <aside class="ai-controls-panel">
+          <h3><i class="fas fa-chart-bar"></i> التقارير الجاهزة</h3>
+          <div class="buttons">
+            <button class="report-btn" data-q="الأكثر استهلاكا"><i class="fas fa-fire"></i> الأكثر استهلاكا</button>
+            <button class="report-btn" data-q="منتهي الصلاحية"><i class="fas fa-exclamation-triangle"></i> منتهي الصلاحية</button>
+            <button class="report-btn" data-q="الكمية القليلة"><i class="fas fa-exclamation-circle"></i> الكمية القليلة</button>
+            <button class="report-btn" data-q="ملخص عام"><i class="fas fa-clipboard-list"></i> ملخص عام</button>
+          </div>
+          <div style="margin-top:12px; display:flex; gap:8px;">
+            <a class="btn" href="/api/export_excel"><i class="fas fa-download"></i> تحميل نتايج التقرير (Excel)</a>
+            <button id="openGlobalChat" class="btn"><i class="fas fa-comments"></i> فتح الشات</button>
+          </div>
+        </aside>
+
+        <section class="chat-panel">
+          <div style="display:flex;align-items:center;justify-content:center;padding:24px;color:var(--muted)">افتح الشات من أيقونة الشات أعلى اليمين أو اضغط "فتح الشات" لبدء محادثة مع مساعد المخزن.</div>
+        </section>
+      </div>
+      <noscript>
+        <div style="padding:12px;background:#fff3cd;border:1px solid #ffeeba;border-radius:6px;margin:12px 0;color:#856404">هذه الصفحة تحتاج تشغيل جافاسكربت لكي يعمل الشات و التقارير.</div>
+      </noscript>
+    {% endblock %}
+
+    {% block footer %}
+    <!-- Empty footer block to hide footer -->
+    {% endblock %}
